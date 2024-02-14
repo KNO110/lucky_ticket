@@ -1,0 +1,14 @@
+DECLARE @ticket_num int = 0;
+
+WHILE @ticket_num <= 999999
+BEGIN
+    DECLARE @first_half int = @ticket_num / 1000;
+    DECLARE @second_half int = @ticket_num % 1000;
+
+    IF @first_half / 100 + @first_half % 100 / 10 + @first_half % 10 = @second_half / 100 + @second_half % 100 / 10 + @second_half % 10
+    BEGIN
+        PRINT RIGHT('000000' + CAST(@ticket_num as varchar(6)), 6);
+    END
+
+    SET @ticket_num = @ticket_num + 1;
+END
